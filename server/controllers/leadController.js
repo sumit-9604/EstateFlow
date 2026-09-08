@@ -4,7 +4,7 @@ exports.createLead = async (req, res) => {
     try {
         const newLead = new Lead({ ...req.body, assignedTo: req.user.id });
         const lead = await newLead.save();
-        res.status(201).json(lead);
+        res.status(200).json(lead);
     } catch (err) {
         res.status(500).json({ msg: 'Server Error creating lead', error: err.message });
     }
