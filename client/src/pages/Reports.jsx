@@ -20,7 +20,7 @@ const defaultLeadStatusData = [
   { status: 'Lost', count: 2 },
 ];
 
-const COLORS = ['#4f46e5', '#059669', '#d97706', '#e11d48', '#8b5cf6'];
+const COLORS = ['#0f172a', '#059669', '#d97706', '#e11d48', '#64748b'];
 const pieData = [
   { name: 'Residential Luxury', value: 45 },
   { name: 'Commercial Spaces', value: 25 },
@@ -64,7 +64,7 @@ const Reports = () => {
           <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center">
-                <TrendingUp className="w-4 h-4 mr-2 text-indigo-600" /> Revenue Trajectory
+                <TrendingUp className="w-4 h-4 mr-2 text-slate-700" /> Revenue Trajectory
               </h2>
               <p className="text-xs text-slate-400 font-medium">Monthly closed deal volume (INR)</p>
             </div>
@@ -74,8 +74,8 @@ const Reports = () => {
               <AreaChart data={defaultRevenueData}>
                 <defs>
                   <linearGradient id="colorRevRep" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#4f46e5" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#334155" stopOpacity={0.25}/>
+                    <stop offset="95%" stopColor="#334155" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -85,7 +85,7 @@ const Reports = () => {
                   formatter={(val) => [`₹${val.toLocaleString('en-IN')}`, 'Revenue']}
                   contentStyle={{ backgroundColor: '#0f172a', borderRadius: '12px', border: 'none', color: '#fff' }}
                 />
-                <Area type="monotone" dataKey="revenue" stroke="#4f46e5" strokeWidth={3} fillOpacity={1} fill="url(#colorRevRep)" />
+                <Area type="monotone" dataKey="revenue" stroke="#334155" strokeWidth={3} fillOpacity={1} fill="url(#colorRevRep)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -96,7 +96,7 @@ const Reports = () => {
           <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="text-base font-bold text-slate-900 flex items-center">
-                <BarChart3 className="w-4 h-4 mr-2 text-indigo-600" /> Lead Pipeline Conversion
+                <BarChart3 className="w-4 h-4 mr-2 text-slate-700" /> Lead Pipeline Conversion
               </h2>
               <p className="text-xs text-slate-400 font-medium">Lead volume across status stages</p>
             </div>
@@ -108,7 +108,7 @@ const Reports = () => {
                 <XAxis dataKey="status" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
                 <YAxis tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
                 <Tooltip contentStyle={{ backgroundColor: '#0f172a', borderRadius: '12px', border: 'none', color: '#fff' }} />
-                <Bar dataKey="count" fill="#6366f1" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="count" fill="#475569" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -120,7 +120,7 @@ const Reports = () => {
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-base font-bold text-slate-900 flex items-center">
-              <PieIcon className="w-4 h-4 mr-2 text-indigo-600" /> Property Portfolio Allocation
+              <PieIcon className="w-4 h-4 mr-2 text-slate-700" /> Property Portfolio Allocation
             </h2>
             <p className="text-xs text-slate-400 font-medium">Distribution by real estate sector</p>
           </div>
@@ -147,7 +147,7 @@ const Reports = () => {
                   <span className="w-3 h-3 rounded-full mr-2.5" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
                   {d.name}
                 </div>
-                <span className="text-xs font-extrabold text-indigo-600">{d.value}%</span>
+                <span className="text-xs font-extrabold text-slate-900">{d.value}%</span>
               </div>
             ))}
           </div>

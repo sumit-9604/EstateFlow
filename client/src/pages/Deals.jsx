@@ -97,7 +97,7 @@ const Deals = () => {
                 </div>
                 <button
                     onClick={() => setShowModal(true)}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center shadow-lg shadow-indigo-600/25 transition-all"
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center shadow-lg shadow-purple-600/25 transition-all"
                 >
                     <Plus className="mr-2 w-4 h-4" /> Create Deal
                 </button>
@@ -106,7 +106,7 @@ const Deals = () => {
             {/* Pipeline Overview Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4">
-                    <div className="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                    <div className="p-3 bg-slate-100 text-slate-700 rounded-xl">
                         <TrendingUp className="w-6 h-6" />
                     </div>
                     <div>
@@ -140,7 +140,7 @@ const Deals = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {stages.map(stage => {
                     const stageDeals = deals.filter(d => d.stage === stage);
-                    const stageColor = stage === 'Negotiation' ? 'border-amber-400 bg-amber-500/10' : stage === 'Agreement' ? 'border-indigo-400 bg-indigo-500/10' : 'border-emerald-400 bg-emerald-500/10';
+                    const stageColor = stage === 'Negotiation' ? 'border-amber-400 bg-amber-500/10' : stage === 'Agreement' ? 'border-slate-400 bg-slate-500/10' : 'border-emerald-400 bg-emerald-500/10';
 
                     return (
                         <div key={stage} className="bg-slate-100/70 border border-slate-200/80 rounded-2xl p-4 flex flex-col">
@@ -179,7 +179,7 @@ const Deals = () => {
                                                 <div className="bg-slate-50 p-3 rounded-lg mb-4 flex justify-between items-center">
                                                     <div>
                                                         <span className="text-[10px] text-slate-400 font-bold uppercase block">Deal Value</span>
-                                                        <span className="text-sm font-extrabold text-indigo-600">₹{deal.finalPrice?.toLocaleString('en-IN')}</span>
+                                                        <span className="text-sm font-extrabold text-slate-900">₹{deal.finalPrice?.toLocaleString('en-IN')}</span>
                                                     </div>
                                                     <div className="text-right">
                                                         <span className="text-[10px] text-slate-400 font-bold uppercase block">Comm ({deal.commissionRate || 3}%)</span>
@@ -201,7 +201,7 @@ const Deals = () => {
                                                     {stage !== 'Closed' && (
                                                         <button
                                                             onClick={() => moveStage(deal._id, stages[stages.indexOf(stage) + 1])}
-                                                            className="flex items-center text-indigo-600 hover:text-indigo-800 font-extrabold bg-indigo-50 px-3 py-1 rounded-lg transition-colors"
+                                                            className="flex items-center text-slate-700 hover:text-slate-900 font-bold bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg transition-colors"
                                                         >
                                                             Next <ArrowRight className="w-3 h-3 ml-1" />
                                                         </button>
@@ -241,7 +241,7 @@ const Deals = () => {
                                     required
                                     value={formData.client}
                                     onChange={(e) => setFormData({ ...formData, client: e.target.value })}
-                                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-indigo-600"
+                                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-purple-600"
                                 >
                                     <option value="">-- Choose Client --</option>
                                     {clients.map(c => (
@@ -256,7 +256,7 @@ const Deals = () => {
                                     required
                                     value={formData.property}
                                     onChange={(e) => setFormData({ ...formData, property: e.target.value })}
-                                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-indigo-600"
+                                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-purple-600"
                                 >
                                     <option value="">-- Choose Property Listing --</option>
                                     {properties.map(p => (
@@ -274,7 +274,7 @@ const Deals = () => {
                                         placeholder="7500000"
                                         value={formData.finalPrice}
                                         onChange={(e) => setFormData({ ...formData, finalPrice: e.target.value })}
-                                        className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-indigo-600"
+                                        className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-purple-600"
                                     />
                                 </div>
                                 <div>
@@ -285,7 +285,7 @@ const Deals = () => {
                                         placeholder="3"
                                         value={formData.commissionRate}
                                         onChange={(e) => setFormData({ ...formData, commissionRate: e.target.value })}
-                                        className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-indigo-600"
+                                        className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-purple-600"
                                     />
                                 </div>
                             </div>
@@ -295,7 +295,7 @@ const Deals = () => {
                                 <select
                                     value={formData.stage}
                                     onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
-                                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-indigo-600"
+                                    className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-purple-600"
                                 >
                                     <option value="Negotiation">Negotiation</option>
                                     <option value="Agreement">Agreement</option>
@@ -313,7 +313,7 @@ const Deals = () => {
                                 </button>
                                 <button
                                     type="submit"
-                                    className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-600/30"
+                                    className="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm shadow-lg shadow-purple-600/30"
                                 >
                                     Start Deal
                                 </button>

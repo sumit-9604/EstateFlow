@@ -54,7 +54,7 @@ const ClientProfile = () => {
     <div className="p-6 lg:p-8 bg-slate-50 min-h-screen">
       {/* Top Header */}
       <div className="mb-6 flex items-center justify-between">
-        <Link to="/clients" className="inline-flex items-center text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors">
+        <Link to="/clients" className="inline-flex items-center text-xs font-bold text-slate-500 hover:text-purple-600 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-1.5" /> Back to Client Directory
         </Link>
       </div>
@@ -63,13 +63,13 @@ const ClientProfile = () => {
         {/* Left Profile Card */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-fit">
           <div className="flex items-center space-x-4 mb-6">
-            <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-extrabold text-xl border border-indigo-100">
+            <div className="w-14 h-14 rounded-2xl bg-slate-800 text-white flex items-center justify-center font-extrabold text-xl shadow-sm">
               {client.name ? client.name.charAt(0).toUpperCase() : 'C'}
             </div>
             <div>
               <h2 className="text-xl font-extrabold text-slate-900">{client.name}</h2>
               <span className={`inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full mt-1 ${
-                client.type === 'Buyer' ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                client.type === 'Buyer' ? 'bg-slate-100 text-slate-700 border border-slate-200' : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
               }`}>
                 {client.type}
               </span>
@@ -84,7 +84,7 @@ const ClientProfile = () => {
           {client.preferences && (
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2 text-xs">
               <h3 className="font-extrabold text-slate-700 uppercase tracking-wider text-[10px]">Preferences</h3>
-              {client.preferences.budget > 0 && <div><span className="text-slate-400">Budget:</span> <span className="font-bold text-indigo-600">₹{client.preferences.budget.toLocaleString('en-IN')}</span></div>}
+              {client.preferences.budget > 0 && <div><span className="text-slate-400">Budget:</span> <span className="font-bold text-slate-900">₹{client.preferences.budget.toLocaleString('en-IN')}</span></div>}
               {client.preferences.location && <div><span className="text-slate-400">Preferred Area:</span> <span className="font-semibold text-slate-800">{client.preferences.location}</span></div>}
               {client.preferences.propertyType && <div><span className="text-slate-400">Type:</span> <span className="font-semibold text-slate-800">{client.preferences.propertyType}</span></div>}
             </div>
@@ -96,14 +96,14 @@ const ClientProfile = () => {
           {/* Quick Note Input */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
             <h3 className="text-sm font-extrabold text-slate-900 mb-3 flex items-center">
-              <MessageSquare className="w-4 h-4 mr-2 text-indigo-600" /> Log New Client Note
+              <MessageSquare className="w-4 h-4 mr-2 text-slate-700" /> Log New Client Note
             </h3>
             <form onSubmit={handleAddLog} className="space-y-3">
               <div className="flex gap-3">
                 <select
                   value={interactionType}
                   onChange={(e) => setInteractionType(e.target.value)}
-                  className="bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold px-3 py-2 rounded-xl focus:outline-none focus:border-indigo-600"
+                  className="bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold px-3 py-2 rounded-xl focus:outline-none focus:border-purple-600"
                 >
                   <option value="Call">Call</option>
                   <option value="Email">Email</option>
@@ -116,9 +116,9 @@ const ClientProfile = () => {
                   placeholder="Record conversation outcome or scheduled follow-up..."
                   value={newNote}
                   onChange={(e) => setNewNote(e.target.value)}
-                  className="flex-1 bg-slate-50 border border-slate-200 text-slate-800 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-indigo-600"
+                  className="flex-1 bg-slate-50 border border-slate-200 text-slate-800 text-xs px-3 py-2 rounded-xl focus:outline-none focus:border-purple-600"
                 />
-                <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm">
+                <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-sm">
                   Log
                 </button>
               </div>
@@ -128,17 +128,17 @@ const ClientProfile = () => {
           {/* Timeline View */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
             <h3 className="text-base font-extrabold text-slate-900 mb-6 flex items-center">
-              <Clock className="w-4 h-4 mr-2 text-indigo-600" /> Activity & Interaction Timeline
+              <Clock className="w-4 h-4 mr-2 text-slate-700" /> Activity & Interaction Timeline
             </h3>
 
             {client.interactionHistory && client.interactionHistory.length > 0 ? (
               <div className="relative border-l-2 border-slate-200 ml-4 space-y-6">
                 {client.interactionHistory.map((log, index) => (
                   <div key={index} className="relative pl-6">
-                    <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white shadow-sm" />
+                    <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-800 border-4 border-white shadow-sm" />
                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded-md">
+                        <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 bg-slate-200 text-slate-700 rounded-md">
                           {log.interactionType || 'Interaction'}
                         </span>
                         <span className="text-[10px] text-slate-400 font-semibold">

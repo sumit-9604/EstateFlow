@@ -59,17 +59,17 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
       {/* Background Radial Glow */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-slate-800/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo & Heading */}
         <div className="text-center mb-8">
-          <div className="inline-flex p-3 bg-gradient-to-tr from-indigo-600 to-indigo-500 rounded-2xl shadow-xl shadow-indigo-500/25 text-white mb-3">
+          <div className="inline-flex p-3 bg-slate-900 border border-slate-800 text-purple-400 rounded-2xl shadow-xl mb-3">
             <Building2 className="w-8 h-8" />
           </div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">EstateCRM Platform</h1>
-          <p className="text-sm text-slate-400 mt-1">High-performance Real Estate Management Suite</p>
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">EstateFlow Platform</h1>
+          <p className="text-sm text-slate-400 mt-1">Enterprise Real Estate Suite</p>
         </div>
 
         {/* Card Container */}
