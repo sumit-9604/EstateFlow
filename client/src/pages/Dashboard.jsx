@@ -151,8 +151,8 @@ const Dashboard = () => {
               <AreaChart data={defaultSalesData}>
                 <defs>
                   <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#334155" stopOpacity={0.25}/>
-                    <stop offset="95%" stopColor="#334155" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.25}/>
+                    <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -167,7 +167,7 @@ const Dashboard = () => {
                   formatter={(val) => [`₹${val.toLocaleString('en-IN')}`, 'Revenue']}
                   contentStyle={{ backgroundColor: '#0f172a', borderRadius: '12px', border: 'none', color: '#fff' }}
                 />
-                <Area type="monotone" dataKey="revenue" stroke="#0f172a" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
+                <Area type="monotone" dataKey="revenue" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -177,7 +177,7 @@ const Dashboard = () => {
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-base font-bold text-slate-900">Live Activity Feed</h2>
-            <Link to="/deals" className="text-xs font-bold text-slate-600 hover:text-slate-900 hover:underline">
+            <Link to="/deals" className="text-xs font-bold text-purple-600 hover:underline">
               View All
             </Link>
           </div>
