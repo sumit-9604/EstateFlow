@@ -31,6 +31,7 @@ const Deals = () => {
 
     useEffect(() => {
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const showToast = (message, type = 'success') => {
