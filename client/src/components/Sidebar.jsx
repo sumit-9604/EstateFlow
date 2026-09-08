@@ -48,12 +48,12 @@ const Sidebar = () => {
     <aside className="w-64 h-screen bg-slate-900 text-slate-200 flex flex-col fixed left-0 top-0 z-30 shadow-xl border-r border-slate-800">
       {/* Brand Header */}
       <div className="p-6 border-b border-slate-800 flex items-center space-x-3">
-        <div className="p-2.5 bg-slate-800 rounded-xl text-purple-400 border border-slate-700/60 shadow-sm">
+        <div className="p-2.5 bg-slate-800 rounded-xl text-white border border-slate-700/60 shadow-sm">
           <Building2 className="w-6 h-6" />
         </div>
         <div>
           <h1 className="text-lg font-extrabold text-white tracking-wide font-sans">
-            Estate<span className="text-purple-400">Flow</span>
+            Estate<span className="text-slate-300">Flow</span>
           </h1>
           <p className="text-[11px] text-slate-400 font-medium">Real Estate CRM</p>
         </div>
@@ -69,11 +69,11 @@ const Sidebar = () => {
               to={item.path}
               className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 group font-medium text-sm border-l-4 ${
                 isActive
-                  ? 'bg-slate-800 text-white font-semibold border-purple-500 shadow-sm'
+                  ? 'bg-slate-800/90 text-white font-semibold border-white shadow-sm'
                   : 'border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
               }`}
             >
-              <item.icon className={`w-5 h-5 mr-3.5 transition-transform duration-200 ${isActive ? 'text-purple-400 scale-105' : 'text-slate-400 group-hover:text-slate-200'}`} />
+              <item.icon className={`w-5 h-5 mr-3.5 transition-transform duration-200 ${isActive ? 'text-white scale-105' : 'text-slate-400 group-hover:text-slate-200'}`} />
               <span>{item.name}</span>
             </Link>
           );
@@ -83,7 +83,7 @@ const Sidebar = () => {
       {/* User Profile Badge & Logout */}
       <div className="p-4 border-t border-slate-800/80 bg-slate-950/40 space-y-3">
         <div className="flex items-center px-3 py-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
-          <div className="w-9 h-9 rounded-lg bg-slate-800 text-purple-400 border border-slate-700 flex items-center justify-center font-bold text-sm mr-3">
+          <div className="w-9 h-9 rounded-lg bg-slate-800 text-white border border-slate-700 flex items-center justify-center font-bold text-sm mr-3">
             {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
           </div>
           <div className="flex-1 min-w-0">
