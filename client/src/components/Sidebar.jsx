@@ -61,19 +61,22 @@ const Sidebar = () => {
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto">
+      <nav className="flex-1 px-3 py-5 space-y-1.5 overflow-y-auto">
         {menuItems.map((item) => {
           const isActive = location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path));
           return (
             <Link
               key={item.name}
               to={item.path}
-              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 group font-medium text-sm border-l-4 ${
+              className={`flex items-center px-4 py-3 rounded-2xl transition-all duration-200 group font-medium text-sm relative ${
                 isActive
-                  ? 'bg-slate-800 text-white font-semibold border-purple-500 shadow-sm'
-                  : 'border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                  ? 'bg-slate-800/90 text-white font-semibold shadow-inner'
+                  : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/40'
               }`}
             >
+              {isActive && (
+                <span className="absolute left-1 top-2.5 bottom-2.5 w-1 bg-purple-500 rounded-full" />
+              )}
               <item.icon className={`w-5 h-5 mr-3.5 transition-transform duration-200 ${isActive ? 'text-purple-400 scale-105' : 'text-slate-400 group-hover:text-slate-200'}`} />
               <span>{item.name}</span>
             </Link>
@@ -82,25 +85,25 @@ const Sidebar = () => {
       </nav>
 
       {/* User Profile Badge & Logout */}
-      <div className="p-4 border-t border-slate-800/80 bg-slate-950/40 space-y-3">
-        <div className="flex items-center px-3 py-2 rounded-xl bg-slate-800/50 border border-slate-700/40">
-          <div className="w-9 h-9 rounded-lg bg-slate-800 text-purple-400 border border-slate-700 flex items-center justify-center font-bold text-sm mr-3">
+      <div className="p-4 border-t border-slate-800/80 bg-slate-950/40 space-y-2.5">
+        <div className="flex items-center p-2.5 rounded-2xl bg-slate-800/60 border border-slate-700/50 hover:bg-slate-800 transition-colors">
+          <div className="w-10 h-10 rounded-xl bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center font-bold text-sm mr-3 shrink-0">
             {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-white truncate">{user?.name || 'Agent'}</p>
+            <p className="text-xs font-bold text-white truncate">{user?.name || 'Agent'}</p>
             <span className="inline-flex items-center text-[10px] text-slate-400 font-medium">
-              <ShieldCheck className="w-3 h-3 mr-1 text-emerald-400" />
-              {user?.role || 'Admin Agent'}
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5"></span>
+              {user?.role || 'Admin'}
             </span>
           </div>
         </div>
 
         <button 
           onClick={handleLogout}
-          className="w-full flex items-center px-4 py-2 text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors rounded-xl group"
+          className="w-full flex items-center px-3.5 py-2 text-xs font-semibold text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors rounded-xl group"
         >
-          <LogOut className="w-4 h-4 mr-3 group-hover:scale-105 transition-transform" />
+          <LogOut className="w-4 h-4 mr-2.5 group-hover:scale-105 transition-transform" />
           <span>Sign Out</span>
         </button>
       </div>

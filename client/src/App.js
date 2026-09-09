@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   const isLoginPage = location.pathname === '/login';
 
   return (
-    <div className="flex min-h-screen bg-accent text-slate-800">
+    <div className="flex min-h-screen bg-[#f4f6fa] text-slate-800">
       {!isLoginPage && <Sidebar />}
       <div className={!isLoginPage ? "flex-1 ml-64 min-w-0" : "flex-1 min-w-0"}>
         {children}
