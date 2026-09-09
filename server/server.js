@@ -25,6 +25,15 @@ app.use('/api/reports', require('./routes/reportRoutes'));
 app.use('/api/deals',   require('./routes/dealsRoute'));
 app.use('/api/clients', require('./routes/clientRoute'));
 
+// Serve frontend static build in production
+if (process.env.NODE_ENV === 'production') {
+    const buildPath = path.join(__dirname, '../client/build');
+    app.use(express.static(buildPath));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(buildPath, 'index.html'));
+    });
+}
+
 // Global Error Handling Middleware
 app.use((err, req, res, next) => {
     console.error('Unhandled Error:', err);

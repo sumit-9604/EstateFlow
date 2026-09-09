@@ -8,6 +8,8 @@
     "client": "npm start --prefix client",
     "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm run server\" \"npm run client\"",
     "build": "npm run build --prefix client",
+    "install-all": "npm install && npm install --prefix client && npm install --prefix server",
+    "render-build": "npm install && npm install --prefix server && npm install --prefix client && npm run build --prefix client",
     "seed": "node server/seed.js"
   },
   "dependencies": {
