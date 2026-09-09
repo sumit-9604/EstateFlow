@@ -299,8 +299,8 @@ const Reports = () => {
               {timeRange}
             </span>
           </div>
-          <div className="h-72">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-72 min-w-0">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={250}>
               <AreaChart data={defaultRevenueData}>
                 <defs>
                   <linearGradient id="colorRevRep" x1="0" y1="0" x2="0" y2="1">
@@ -331,8 +331,8 @@ const Reports = () => {
               <p className="text-xs text-slate-400 font-medium">Lead volume across status stages</p>
             </div>
           </div>
-          <div className="h-72">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-72 min-w-0">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={250}>
               <BarChart data={leadStats}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
                 <XAxis dataKey="status" tickLine={false} axisLine={false} tick={{ fill: '#64748b', fontSize: 12 }} />
@@ -357,8 +357,8 @@ const Reports = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-          <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
+          <div className="h-64 min-w-0">
+            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={220}>
               <PieChart>
                 <Pie data={pieData} innerRadius={65} outerRadius={90} paddingAngle={6} dataKey="value">
                   {pieData.map((entry, index) => (
