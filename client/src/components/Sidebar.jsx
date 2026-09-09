@@ -36,7 +36,8 @@ const Sidebar = () => {
     { name: 'Properties', icon: Home, path: '/properties' },
     { name: 'Deals Pipeline', icon: Briefcase, path: '/deals' },
     { name: 'Clients', icon: UserCheck, path: '/clients' },
-    { name: 'Analytics', icon: BarChart3, path: '/reports' },
+    { name: 'Analytics & Reports', icon: BarChart3, path: '/reports' },
+    { name: 'Team & Roles', icon: ShieldCheck, path: '/team' },
   ];
 
   const handleLogout = () => {

@@ -9,6 +9,7 @@ import Deals from './pages/Deals';
 import Reports from './pages/Reports';
 import Login from './pages/Login';
 import Clients from './pages/Client';
+import Team from './pages/Team';
 
 // Higher-Order Component to protect routes
 const ProtectedRoute = ({ children }) => {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/clients" element={<ProtectedRoute><Clients /></ProtectedRoute>} />
           <Route path="/clients/:id" element={<ProtectedRoute><ClientProfile /></ProtectedRoute>} />
           <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+          <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
 
           {/* Fallback Catch-all Route */}
           <Route path="*" element={<Navigate to="/" replace />} />
