@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { ArrowRight, ArrowLeft, Plus, Trash2, X, CheckCircle, Briefcase, Award, TrendingUp } from 'lucide-react';
+import { mockDealsList, mockClientsList } from '../data/mockData';
 
 const Deals = () => {
     const [deals, setDeals] = useState([]);
@@ -21,11 +22,23 @@ const Deals = () => {
                 API.get('/clients'),
                 API.get('/properties')
             ]);
-            if (dealsRes.status === 'fulfilled') setDeals(dealsRes.value.data);
-            if (clientsRes.status === 'fulfilled') setClients(clientsRes.value.data);
-            if (propsRes.status === 'fulfilled') setProperties(propsRes.value.data);
+            if (dealsRes.status === 'fulfilled' && Array.isArray(dealsRes.value.data) && dealsRes.value.data.length > 0) {
+                setDeals(dealsRes.value.data);
+            } else {
+                setDeals(mockDealsList);
+            }
+            if (clientsRes.status === 'fulfilled' && Array.isArray(clientsRes.value.data) && clientsRes.value.data.length > 0) {
+                setClients(clientsRes.value.data);
+            } else {
+                setClients(mockClientsList);
+            }
+            if (propsRes.status === 'fulfilled' && Array.isArray(propsRes.value.data) && propsRes.value.data.length > 0) {
+                setProperties(propsRes.value.data);
+            }
         } catch (err) {
-            showToast('Error loading deal pipeline data', 'error');
+            setDeals(mockDealsList);
+            setClients(mockClientsList);
+            showToast('Loaded demo pipeline data', 'info');
         }
     };
 

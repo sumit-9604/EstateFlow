@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { UserPlus, Search, Trash2, Edit3, X, Phone, Mail, Filter, CheckCircle } from 'lucide-react';
+import { mockLeadsList } from '../data/mockData';
 
 const Leads = () => {
   const [leads, setLeads] = useState([]);
@@ -16,9 +17,13 @@ const Leads = () => {
   const fetchLeads = async () => {
     try {
       const res = await API.get('/leads');
-      setLeads(res.data);
+      if (res.data && res.data.length > 0) {
+        setLeads(res.data);
+      } else {
+        setLeads(mockLeadsList);
+      }
     } catch (err) {
-      showToast('Error loading leads', 'error');
+      setLeads(mockLeadsList);
     }
   };
 

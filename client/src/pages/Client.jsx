@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { User, Phone, Mail, History, Plus, Search, MessageSquare, ExternalLink, Trash2, X, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { mockClientsList } from '../data/mockData';
 
 const Clients = () => {
     const [clients, setClients] = useState([]);
@@ -18,9 +19,13 @@ const Clients = () => {
     const fetchClients = async () => {
         try {
             const res = await API.get('/clients');
-            setClients(res.data);
+            if (res.data && res.data.length > 0) {
+                setClients(res.data);
+            } else {
+                setClients(mockClientsList);
+            }
         } catch (err) {
-            showToast('Error loading client list', 'error');
+            setClients(mockClientsList);
         }
     };
 

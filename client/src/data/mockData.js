@@ -288,3 +288,197 @@ export const mockLiveActivities = [
     link: '/clients'
   }
 ];
+
+export const mockLeadsList = [
+  {
+    _id: 'lead-1',
+    name: 'Rajesh Mehra',
+    phone: '+91 98110 44210',
+    email: 'rajesh.mehra@techcorp.in',
+    budget: 12000000,
+    preferences: '3 BHK, Golf Course Road, High Rise, Sea/Green View',
+    status: 'Qualified',
+    assignedTo: { name: 'Rohit Verma', email: 'rohit.verma@estateflow.com' },
+    createdAt: new Date(Date.now() - 2 * 86400000).toISOString()
+  },
+  {
+    _id: 'lead-2',
+    name: 'Priya Kapoor',
+    phone: '+91 98722 19830',
+    email: 'priya.kapoor@innovate.co',
+    budget: 24000000,
+    preferences: 'Luxury Villa or Penthouse, Private Pool',
+    status: 'Contacted',
+    assignedTo: { name: 'Ananya Deshmukh', email: 'ananya.deshmukh@estateflow.com' },
+    createdAt: new Date(Date.now() - 3 * 86400000).toISOString()
+  },
+  {
+    _id: 'lead-3',
+    name: 'Amit Verma',
+    phone: '+91 99201 55642',
+    email: 'amit.verma@globaladvisory.com',
+    budget: 8500000,
+    preferences: '2 BHK Metro Corridor, Move-in Ready',
+    status: 'New',
+    assignedTo: { name: 'Kabir Singh', email: 'kabir.singh@estateflow.com' },
+    createdAt: new Date(Date.now() - 1 * 86400000).toISOString()
+  },
+  {
+    _id: 'lead-4',
+    name: 'Sunita Singhal',
+    phone: '+91 98104 22334',
+    email: 'sunita.singhal@healthcare.org',
+    budget: 35000000,
+    preferences: 'Independent Bungalow or Farmhouse with Lawn',
+    status: 'Qualified',
+    assignedTo: { name: 'Rohit Verma', email: 'rohit.verma@estateflow.com' },
+    createdAt: new Date(Date.now() - 5 * 86400000).toISOString()
+  },
+  {
+    _id: 'lead-5',
+    name: 'Vikram Sethi',
+    phone: '+91 97118 90123',
+    email: 'vikram.sethi@fintech.io',
+    budget: 18500000,
+    preferences: '4 BHK Duplex, Wish Town / Central Noida',
+    status: 'Closed',
+    assignedTo: { name: 'Ananya Deshmukh', email: 'ananya.deshmukh@estateflow.com' },
+    createdAt: new Date(Date.now() - 8 * 86400000).toISOString()
+  }
+];
+
+export const mockClientsList = [
+  {
+    _id: 'client-1',
+    name: 'Vikramaditya Singhania',
+    email: 'vikram.singhania@gmail.com',
+    phone: '+91 98112 34567',
+    type: 'Buyer',
+    preferences: {
+      budget: 30000000,
+      location: 'Golf Course Road, Gurgaon',
+      propertyType: 'Penthouse / 4BHK'
+    },
+    interactionHistory: [
+      {
+        date: new Date(Date.now() - 2 * 86400000).toISOString(),
+        note: 'Completed physical walkthrough of DLF Phase 5 penthouse. Client showed strong enthusiasm.',
+        interactionType: 'Visit'
+      },
+      {
+        date: new Date(Date.now() - 5 * 86400000).toISOString(),
+        note: 'Discussed payment milestones and verified bank pre-sanction letter for ₹2.5Cr.',
+        interactionType: 'Call'
+      }
+    ],
+    createdAt: new Date(Date.now() - 10 * 86400000).toISOString()
+  },
+  {
+    _id: 'client-2',
+    name: 'Dr. Sunita Kulkarni',
+    email: 'sunita.kulkarni@apollo.org',
+    phone: '+91 98220 98765',
+    type: 'Buyer',
+    preferences: {
+      budget: 48000000,
+      location: 'Worli Sea Face, South Mumbai',
+      propertyType: 'Sea Facing 3BHK'
+    },
+    interactionHistory: [
+      {
+        date: new Date(Date.now() - 1 * 86400000).toISOString(),
+        note: 'Agreement draft reviewed by legal counsel. Token amount transfer scheduled.',
+        interactionType: 'Visit'
+      }
+    ],
+    createdAt: new Date(Date.now() - 12 * 86400000).toISOString()
+  },
+  {
+    _id: 'client-3',
+    name: 'Rajesh Mehra',
+    email: 'rajesh.mehra@techcorp.in',
+    phone: '+91 98450 12345',
+    type: 'Seller',
+    preferences: {
+      budget: 35000000,
+      location: 'Whitefield, Bangalore',
+      propertyType: 'Gated Villa'
+    },
+    interactionHistory: [
+      {
+        date: new Date(Date.now() - 3 * 86400000).toISOString(),
+        note: 'Finalized sale deed registration with buyer Dr. Anand. Keys handed over.',
+        interactionType: 'Visit'
+      }
+    ],
+    createdAt: new Date(Date.now() - 15 * 86400000).toISOString()
+  },
+  {
+    _id: 'client-4',
+    name: 'Meera Chawla',
+    email: 'meera.chawla@venturecap.com',
+    phone: '+91 99100 88221',
+    type: 'Buyer',
+    preferences: {
+      budget: 70000000,
+      location: 'Financial District, Hyderabad',
+      propertyType: 'Commercial Grade-A Office'
+    },
+    interactionHistory: [
+      {
+        date: new Date(Date.now() - 4 * 86400000).toISOString(),
+        note: 'Site visit with facility manager. Evaluating 9-year rental lease model.',
+        interactionType: 'Visit'
+      }
+    ],
+    createdAt: new Date(Date.now() - 18 * 86400000).toISOString()
+  }
+];
+
+export const mockDealsList = [
+  {
+    _id: 'deal-1',
+    client: { _id: 'client-1', name: 'Vikramaditya Singhania', email: 'vikram.singhania@gmail.com', phone: '+91 98112 34567', type: 'Buyer' },
+    property: { _id: 'prop-1', title: 'Skyline Panorama 4BHK Penthouse', location: 'Golf Course Road, Gurgaon', price: 28000000, status: 'Available' },
+    agent: { _id: 'agent-1', name: 'Rohit Verma', email: 'rohit.verma@estateflow.com' },
+    finalPrice: 28000000,
+    commissionRate: 3,
+    commissionAmount: 840000,
+    stage: 'Agreement',
+    createdAt: new Date(Date.now() - 3 * 86400000).toISOString()
+  },
+  {
+    _id: 'deal-2',
+    client: { _id: 'client-2', name: 'Dr. Sunita Kulkarni', email: 'sunita.kulkarni@apollo.org', phone: '+91 98220 98765', type: 'Buyer' },
+    property: { _id: 'prop-2', title: 'The Bayview Azure Luxury Residence', location: 'Worli Sea Face, South Mumbai', price: 45000000, status: 'Under Offer' },
+    agent: { _id: 'agent-2', name: 'Ananya Deshmukh', email: 'ananya.deshmukh@estateflow.com' },
+    finalPrice: 45000000,
+    commissionRate: 2.5,
+    commissionAmount: 1125000,
+    stage: 'Negotiation',
+    createdAt: new Date(Date.now() - 4 * 86400000).toISOString()
+  },
+  {
+    _id: 'deal-3',
+    client: { _id: 'client-3', name: 'Rajesh Mehra', email: 'rajesh.mehra@techcorp.in', phone: '+91 98450 12345', type: 'Seller' },
+    property: { _id: 'prop-3', title: 'Greenwood Manor Independent Villa', location: 'Whitefield, Bangalore', price: 32000000, status: 'Sold' },
+    agent: { _id: 'agent-1', name: 'Rohit Verma', email: 'rohit.verma@estateflow.com' },
+    finalPrice: 32000000,
+    commissionRate: 3,
+    commissionAmount: 960000,
+    stage: 'Closed',
+    createdAt: new Date(Date.now() - 10 * 86400000).toISOString()
+  },
+  {
+    _id: 'deal-4',
+    client: { _id: 'client-4', name: 'Meera Chawla', email: 'meera.chawla@venturecap.com', phone: '+91 99100 88221', type: 'Buyer' },
+    property: { _id: 'prop-4', title: 'Apex CyberTower Grade-A Commercial Floor', location: 'Gachibowli, Hyderabad', price: 68000000, status: 'Available' },
+    agent: { _id: 'agent-3', name: 'Kabir Singh', email: 'kabir.singh@estateflow.com' },
+    finalPrice: 65000000,
+    commissionRate: 2,
+    commissionAmount: 1300000,
+    stage: 'Negotiation',
+    createdAt: new Date(Date.now() - 2 * 86400000).toISOString()
+  }
+];
+

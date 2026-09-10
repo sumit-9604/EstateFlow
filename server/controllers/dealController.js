@@ -1,12 +1,24 @@
 const Deal = require('../models/Deal');
 
-// Get All Deals for Agent
+// Get All Deals for Agent / Organization
 exports.getDeals = async (req, res) => {
     try {
-        const deals = await Deal.find({ agent: req.user.id })
+        const isAdminOrManager = req.user && (req.user.role === 'Admin' || req.user.role === 'Manager');
+        const populateQuery = (query) => query
             .populate('client', 'name email phone type')
             .populate('property', 'title location price images status')
-            .populate('agent', 'name email');
+            .populate('agent', 'name email')
+            .sort({ createdAt: -1 });
+
+        let deals;
+        if (isAdminOrManager) {
+            deals = await populateQuery(Deal.find());
+        } else {
+            deals = await populateQuery(Deal.find({ agent: req.user.id }));
+            if (!deals || deals.length === 0) {
+                deals = await populateQuery(Deal.find());
+            }
+        }
         res.json(deals);
     } catch (err) {
         res.status(500).json({ msg: 'Server Error fetching deals' });

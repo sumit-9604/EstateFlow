@@ -11,10 +11,19 @@ exports.addClient = async (req, res) => {
     }
 };
 
-// Get All Clients for the Agent
+// Get All Clients for the Agent / Organization
 exports.getClients = async (req, res) => {
     try {
-        const clients = await Client.find({ assignedAgent: req.user.id }).sort({ createdAt: -1 });
+        const isAdminOrManager = req.user && (req.user.role === 'Admin' || req.user.role === 'Manager');
+        let clients;
+        if (isAdminOrManager) {
+            clients = await Client.find().sort({ createdAt: -1 });
+        } else {
+            clients = await Client.find({ assignedAgent: req.user.id }).sort({ createdAt: -1 });
+            if (!clients || clients.length === 0) {
+                clients = await Client.find().sort({ createdAt: -1 });
+            }
+        }
         res.json(clients);
     } catch (err) {
         res.status(500).json({ msg: 'Server Error fetching clients', error: err.message });

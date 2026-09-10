@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { MapPin, Plus, X, Search, Building2, Maximize, Trash2, Eye, CheckCircle } from 'lucide-react';
+import { mockFeaturedProperties } from '../data/mockData';
 
 const Properties = () => {
   const [properties, setProperties] = useState([]);
@@ -84,6 +85,35 @@ const Properties = () => {
     return styles[status] || 'bg-slate-100 text-slate-700 border-slate-200';
   };
 
+  const fallbackImages = [
+    'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80'
+  ];
+
+  const getPropertyImage = (prop, idx = 0) => {
+    if (prop?.images && Array.isArray(prop.images) && prop.images.length > 0 && prop.images[0]) {
+      const img = prop.images[0];
+      if (img.startsWith('http://') || img.startsWith('https://') || img.startsWith('data:')) {
+        return img;
+      }
+      const backendUrl = process.env.REACT_APP_API_URL 
+        ? process.env.REACT_APP_API_URL.replace(/\/api\/?$/, '') 
+        : (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000');
+      const cleanPath = img.startsWith('/') ? img : `/${img}`;
+      return `${backendUrl}${cleanPath}`;
+    }
+    if (mockFeaturedProperties && mockFeaturedProperties.length > 0) {
+      return mockFeaturedProperties[idx % mockFeaturedProperties.length].imageUrl;
+    }
+    return fallbackImages[idx % fallbackImages.length];
+  };
+
   const filteredProperties = properties.filter(prop => {
     const matchesSearch = prop.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           prop.location?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -148,25 +178,21 @@ const Properties = () => {
       {/* Property Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProperties.length > 0 ? (
-          filteredProperties.map((prop) => (
+          filteredProperties.map((prop, idx) => (
             <div key={prop._id} className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
               {/* Image Preview Container */}
               <div className="h-52 bg-slate-900 relative overflow-hidden">
-                {prop.images && prop.images[0] ? (
-                  <img
-                    src={`http://localhost:5000${prop.images[0]}`}
-                    alt={prop.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                ) : null}
-                <div className={`w-full h-full ${prop.images && prop.images[0] ? 'hidden' : 'flex'} flex-col items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900 text-slate-400 p-4`}>
-                  <Building2 className="w-12 h-12 text-slate-600 mb-2" />
-                  <span className="text-xs font-semibold text-slate-500">No Image Uploaded</span>
-                </div>
+                <img
+                  src={getPropertyImage(prop, idx)}
+                  alt={prop.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    const fallback = fallbackImages[idx % fallbackImages.length];
+                    if (e.target.src !== fallback) {
+                      e.target.src = fallback;
+                    }
+                  }}
+                />
 
                 <div className="absolute top-4 right-4">
                   <span className={`px-3 py-1 rounded-full text-[11px] font-bold shadow-md border ${getStatusBadge(prop.status)}`}>
@@ -356,10 +382,25 @@ const Properties = () => {
           <div className="bg-white rounded-2xl w-full max-w-lg p-6 shadow-2xl relative border border-slate-100">
             <button
               onClick={() => setSelectedPropDetails(null)}
-              className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+              className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 p-1 rounded-lg z-10 bg-white/80 backdrop-blur-sm"
             >
               <X className="w-5 h-5" />
             </button>
+            <div className="h-48 w-full rounded-xl overflow-hidden mb-4 bg-slate-900 relative">
+              <img
+                src={getPropertyImage(selectedPropDetails, 0)}
+                alt={selectedPropDetails.title}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src = fallbackImages[0];
+                }}
+              />
+              <div className="absolute top-3 left-3">
+                <span className={`px-3 py-1 rounded-full text-[11px] font-bold shadow-md border ${getStatusBadge(selectedPropDetails.status)}`}>
+                  {selectedPropDetails.status}
+                </span>
+              </div>
+            </div>
             <h2 className="text-xl font-extrabold text-slate-900 mb-2">{selectedPropDetails.title}</h2>
             <p className="text-xs text-slate-500 flex items-center mb-4"><MapPin className="w-3.5 h-3.5 mr-1" />{selectedPropDetails.location}</p>
 

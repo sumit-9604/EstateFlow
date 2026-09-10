@@ -208,7 +208,7 @@ const seedDatabase = async () => {
                 size: '3,450 sqft',
                 amenities: ['Private Elevator', 'Infinity Pool', '3 Covered Parkings', 'Clubhouse', 'Concierge'],
                 status: 'Available',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'],
                 agent: agent1._id
             },
             {
@@ -218,7 +218,7 @@ const seedDatabase = async () => {
                 size: '2,400 sqft',
                 amenities: ['Arabian Sea View', 'Italian Marble', 'Smart Automation', 'Gymnasium', 'Valet'],
                 status: 'Under Offer',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80'],
                 agent: agent2._id
             },
             {
@@ -228,7 +228,7 @@ const seedDatabase = async () => {
                 size: '4,100 sqft',
                 amenities: ['Private Lawn', 'Solar Power Backup', 'EV Charging', 'Home Theatre Room'],
                 status: 'Sold',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'],
                 agent: agent1._id
             },
             {
@@ -238,7 +238,7 @@ const seedDatabase = async () => {
                 size: '5,600 sqft',
                 amenities: ['100% DG Backup', 'High Speed Elevators', 'LEED Gold Certified', 'Central HVAC'],
                 status: 'Available',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'],
                 agent: agent3._id
             },
             {
@@ -248,7 +248,7 @@ const seedDatabase = async () => {
                 size: '2,800 sqft',
                 amenities: ['18-Hole Golf View', 'Double Height Living', 'Heated Indoor Pool', 'Spa'],
                 status: 'Available',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80'],
                 agent: agent2._id
             },
             {
@@ -258,7 +258,7 @@ const seedDatabase = async () => {
                 size: '1.25 Acres',
                 amenities: ['Swimming Pool', 'Landscaped Lawns', 'Security Guard Post', 'Gazebo', 'Fruit Orchard'],
                 status: 'Available',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80'],
                 agent: manager._id
             },
             {
@@ -268,7 +268,7 @@ const seedDatabase = async () => {
                 size: '4,500 sqft',
                 amenities: ['Antique Sandstone Pillars', 'Courtyard Garden', 'Modern Modular Kitchen', 'Bespoke Lighting'],
                 status: 'Under Offer',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80'],
                 agent: agent2._id
             },
             {
@@ -278,7 +278,7 @@ const seedDatabase = async () => {
                 size: '850 sqft',
                 amenities: ['Fully Furnished', 'Metro Station 200m', 'Rooftop Lounge', 'Biometric Security'],
                 status: 'Rented',
-                images: [],
+                images: ['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80'],
                 agent: agent3._id
             }
         ]);

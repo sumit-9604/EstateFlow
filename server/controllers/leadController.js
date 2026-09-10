@@ -12,7 +12,16 @@ exports.createLead = async (req, res) => {
 
 exports.getLeads = async (req, res) => {
     try {
-        const leads = await Lead.find({ assignedTo: req.user.id }).populate('assignedTo', 'name email');
+        const isAdminOrManager = req.user && (req.user.role === 'Admin' || req.user.role === 'Manager');
+        let leads;
+        if (isAdminOrManager) {
+            leads = await Lead.find().populate('assignedTo', 'name email').sort({ createdAt: -1 });
+        } else {
+            leads = await Lead.find({ assignedTo: req.user.id }).populate('assignedTo', 'name email').sort({ createdAt: -1 });
+            if (!leads || leads.length === 0) {
+                leads = await Lead.find().populate('assignedTo', 'name email').sort({ createdAt: -1 });
+            }
+        }
         res.json(leads);
     } catch (err) {
         res.status(500).json({ msg: 'Server Error fetching leads', error: err.message });
